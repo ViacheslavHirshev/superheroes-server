@@ -17,13 +17,13 @@ export class ImageEntity {
   url: string;
 
   @CreateDateColumn({ type: 'timestamptz', nullable: false })
-  created_at: string;
+  created_at: Date;
 
   @UpdateDateColumn({ type: 'timestamptz', nullable: false })
-  updated_at: string;
+  updated_at: Date;
 
   @DeleteDateColumn({ type: 'timestamptz', nullable: true })
-  deleted_at?: string;
+  deleted_at?: Date;
 
   @ManyToOne(() => SuperheroEntity, (superhero) => superhero.images)
   @JoinColumn({ name: 'superhero_id' })
