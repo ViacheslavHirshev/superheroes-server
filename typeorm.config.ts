@@ -13,7 +13,6 @@ export default new DataSource({
   username: configService.get<string>('PG_USERNAME'),
   password: configService.get<string>('PG_PASSWORD'),
   database: configService.get<string>('PG_DATABASE'),
-  entities: [__dirname + '/entities/**/*.entity{.ts,.js}'],
   synchronize: false,
-  migrations: [__dirname + '/migrations/**/*{.js,.ts}'],
+  migrations: ['./migrations/**/*{.js,.ts}'],
 });
