@@ -1,6 +1,8 @@
 import { Module } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { Image } from './entities/image.entity';
+import { Superhero } from './entities/superhero.entity';
 
 @Module({
   imports: [

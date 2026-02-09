@@ -2,43 +2,45 @@ import {
   Column,
   CreateDateColumn,
   DeleteDateColumn,
+  Entity,
   OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { ImageEntity } from './image.entity';
+import { Image } from './image.entity';
 
-export class SuperheroEntity {
+@Entity('superhero')
+export class Superhero {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ type: 'varchar', nullable: false, unique: true })
+  @Column({ type: 'varchar', unique: true })
   nickname: string;
 
-  @Column({ type: 'varchar', nullable: false })
+  @Column({ type: 'varchar' })
   real_name: string;
 
-  @Column({ type: 'text', nullable: false })
+  @Column({ type: 'text' })
   origin_description: string;
 
-  @Column({ type: 'text', nullable: false })
+  @Column({ type: 'text' })
   superpowers: string;
 
-  @Column({ type: 'text', nullable: false, unique: true })
+  @Column({ type: 'text', unique: true })
   catch_phrase: string;
 
   @Column({ type: 'varchar', nullable: true })
-  avatar_url?: string;
+  avatar_url: string | null;
 
-  @CreateDateColumn({ type: 'timestamptz', nullable: false })
+  @CreateDateColumn({ type: 'timestamptz' })
   created_at: Date;
 
-  @UpdateDateColumn({ type: 'timestamptz', nullable: false })
+  @UpdateDateColumn({ type: 'timestamptz' })
   updated_at: Date;
 
   @DeleteDateColumn({ type: 'timestamptz', nullable: true })
-  deleted_at?: Date;
+  deleted_at: Date | null;
 
-  @OneToMany(() => ImageEntity, (image) => image.superhero)
-  images: ImageEntity[];
+  @OneToMany(() => Image, (image) => image.superhero)
+  images: Image[];
 }

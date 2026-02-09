@@ -15,6 +15,8 @@ export class AddedSuperheroAndImageTables1770474147269 implements MigrationInter
             name: 'id',
             type: 'int',
             isPrimary: true,
+            isGenerated: true,
+            generationStrategy: 'increment',
           },
           {
             name: 'nickname',
@@ -77,9 +79,11 @@ export class AddedSuperheroAndImageTables1770474147269 implements MigrationInter
             name: 'id',
             type: 'int',
             isPrimary: true,
+            isGenerated: true,
+            generationStrategy: 'increment',
           },
           {
-            name: 'path',
+            name: 'url',
             type: 'varchar',
             isNullable: false,
           },

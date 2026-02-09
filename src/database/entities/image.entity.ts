@@ -2,35 +2,36 @@ import {
   Column,
   CreateDateColumn,
   DeleteDateColumn,
+  Entity,
   JoinColumn,
   ManyToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { SuperheroEntity } from './superhero.entity';
+import { Superhero } from './superhero.entity';
 
-export class ImageEntity {
+@Entity('image')
+export class Image {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ type: 'varchar', nullable: false })
+  @Column({ type: 'varchar' })
   url: string;
 
-  @CreateDateColumn({ type: 'timestamptz', nullable: false })
+  @CreateDateColumn({ type: 'timestamptz' })
   created_at: Date;
 
-  @UpdateDateColumn({ type: 'timestamptz', nullable: false })
+  @UpdateDateColumn({ type: 'timestamptz' })
   updated_at: Date;
 
   @DeleteDateColumn({ type: 'timestamptz', nullable: true })
-  deleted_at?: Date;
+  deleted_at: Date | null;
 
-  @ManyToOne(() => SuperheroEntity, (superhero) => superhero.images)
+  @ManyToOne(() => Superhero, (superhero) => superhero.images)
   @JoinColumn({ name: 'superhero_id' })
-  superhero: SuperheroEntity;
+  superhero: Superhero;
   @Column({
     type: 'int',
-    nullable: false,
   })
   superhero_id: number;
 }
