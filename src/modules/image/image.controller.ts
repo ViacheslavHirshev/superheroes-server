@@ -20,9 +20,9 @@ import {
 export class ImageController {
   constructor(private imageService: ImageService) {}
 
-  @Delete()
+  @Delete(':id')
   @ApiBody(SWAGGER_IMAGE_DELETE_BODY)
-  public async delete(@Body('id', ParseIntPipe) imageId: number) {
+  public async delete(@Param('id', ParseIntPipe) imageId: number) {
     return this.imageService.deleteImage(imageId);
   }
 

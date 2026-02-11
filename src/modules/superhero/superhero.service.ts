@@ -54,7 +54,7 @@ export class SuperheroService {
         isLast: page * limit >= result[1],
         limit,
         totalItems: result[1],
-        totalPages: result[1] < limit ? 1 : Math.floor(result[1] / limit),
+        totalPages: result[1] < limit ? 1 : Math.ceil(result[1] / limit),
         superheroes,
       };
     } catch (error) {
